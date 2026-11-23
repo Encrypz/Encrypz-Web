@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- SEO Meta Tags -->
   <meta name="description"
-    content="Encrypz is a zero-knowledge encryption application that secures your files inside your device before they ever touch the cloud.">
-  <meta name="keywords" content="encryption, zero knowledge, client-side encryption, secure cloud storage, privacy">
+    content="Encrypz is a serverless zero-knowledge encryption application for Android. Secure files up to 4 GB locally in offline phone vaults or sync directly to Google Drive with zero backend servers.">
+  <meta name="keywords" content="encryption, zero knowledge, client-side encryption, offline vault, android encryption, google drive encryption, scrypt, privacy">
   <meta name="author" content="Encrypz">
 
   <!-- Open Graph / Social Media Meta Tags -->
   <meta property="og:title" content="Encrypz - Zero Compromise Encryption">
-  <meta property="og:description" content="Secure your files locally on your device before they ever touch the cloud.">
+  <meta property="og:description" content="Serverless zero-knowledge encryption for Android. Keep encrypted vaults offline on your phone or sync directly to Google Drive.">
   <meta property="og:type" content="website">
 
   <!-- Mobile Theme Color -->
@@ -62,9 +62,9 @@
         Zero Compromise.
       </h1>
       <p class="hero-subheadline fade-in-up" style="animation-delay: 0.1s;">
-        Encrypz is a zero-knowledge encryption application that secures your files inside your device before they ever
-        touch
-        the cloud. No one, not even us, can access your data.<br /><strong style="color: var(--primary);">Completely
+        Encrypz is a 100% serverless, zero-knowledge encryption application for Android. Keep encrypted vaults
+        completely offline on your phone or sync directly to Google Drive with zero backend servers and
+        end-to-end streaming encryption up to 4 GB.<br /><strong style="color: var(--primary);">Completely
           free and open-source.</strong>
       </p>
       <div class="hero-visual fade-in-up" style="animation-delay: 0.2s;">
@@ -205,8 +205,8 @@
     <div class="container">
       <div class="section-heading">
         <h2 class="section-title">Security That <span class="text-gradient">Never Leaves Your Device</span></h2>
-        <p class="section-desc">Advanced native Android cryptography, zero-knowledge keys, and direct Google Drive
-          storage.</p>
+        <p class="section-desc">Encrypz Vault V2 brings on-device cryptography to offline phone vaults and direct
+          Google Drive sync with zero backend servers.</p>
       </div>
 
       <div class="bento-grid features-grid">
@@ -223,9 +223,9 @@
               <path d="M7 14v.01"></path>
             </svg>
           </div>
-          <h3>100% Zero-Knowledge</h3>
-          <p>Plaintext passwords and file contents are never stored in MongoDB. All cryptographic operations execute
-            locally on your device.</p>
+          <h3>100% Serverless &amp; Zero-Knowledge</h3>
+          <p>Zero backend servers, zero external databases, and zero account tracking. Every key derivation and
+            cryptographic operation runs strictly on your Android device.</p>
         </div>
 
         <!-- Feature 2 -->
@@ -237,9 +237,9 @@
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </div>
-          <h3>AES-256-GCM</h3>
-          <p>Dynamic in-memory authenticated encryption (supporting files up to 15 MiB) to protect confidentiality and
-            instantly detect tampering.</p>
+          <h3>Streaming AES-256-GCM (Up to 4 GB)</h3>
+          <p>Encrypz Vault V2 (<code>EPZ2</code>) encrypts files in authenticated 64 KiB chunks with per-file keys,
+            supporting files up to 4 GB and random-access media playback without memory limits.</p>
         </div>
 
         <!-- Feature 3 -->
@@ -252,9 +252,10 @@
               </path>
             </svg>
           </div>
-          <h3>PBKDF2-HMAC-SHA256</h3>
-          <p>High-security key derivation with 600,000 iterations for new accounts, engineered to withstand brute-force
-            and GPU attacks.</p>
+          <h3>scrypt + Offline Recovery Key</h3>
+          <p>Memory-hard <code>scrypt</code> (<code>N=32768, r=8, p=1</code>) key derivation, RFC 3394 AES Key Wrap,
+            signed <code>vault.encrypz</code> manifests, and an offline Base32 Recovery Key to reset forgotten passwords
+            without servers.</p>
         </div>
 
         <!-- Feature 4 -->
@@ -265,9 +266,9 @@
               <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
             </svg>
           </div>
-          <h3>Direct Drive Uploads</h3>
-          <p>Encrypted files stream directly to Google Drive without middleman file servers. Account login is
-            coordinated via our .NET & MongoDB backend.</p>
+          <h3>Offline Vaults &amp; Direct Drive Sync</h3>
+          <p>Create vaults in Phone Storage, any Folder on Phone (SAF), or sync directly to Google Drive using
+            resumable chunked uploads with zero middleman servers.</p>
         </div>
 
         <!-- Feature 5 -->
@@ -280,9 +281,9 @@
               <path d="M10 11V9a2 2 0 1 1 4 0v2"></path>
             </svg>
           </div>
-          <h3>Immediate Vault Locking</h3>
-          <p>Secure your vault with a 6-digit PIN or master password. The vault locks immediately when you switch apps
-            or close the screen.</p>
+          <h3>Biometrics, PIN &amp; Instant Lock</h3>
+          <p>Unlock with your master password, 6-digit PIN, or fingerprint (Android Keystore). Auto-locks immediately
+            when switching apps and blocks screenshots &amp; Recents previews (<code>FLAG_SECURE</code>).</p>
         </div>
 
         <!-- Feature 6 -->
@@ -295,9 +296,9 @@
               <polyline points="21 15 16 10 5 21"></polyline>
             </svg>
           </div>
-          <h3>Encrypted Names & Photo Sorting</h3>
-          <p>Protects metadata by encrypting filenames before upload, while automatically organizing encrypted photos
-            chronologically by creation date.</p>
+          <h3>Encrypted Names &amp; Photo Timeline</h3>
+          <p>Obfuscates filenames and folders with RFC 5297 <code>AES-256-SIV</code> and SHA-256 sharding, while
+            providing a chronological Photos timeline, encrypted notes, Recycle Bin, and streaming media viewer.</p>
         </div>
       </div>
     </div>
@@ -314,34 +315,36 @@
         <div class="step-card">
           <div class="step-num">01</div>
           <div class="step-content">
-            <h3>Register & Lock</h3>
-            <p>Sign in using your Google identity or email, and set your master password or 6-digit PIN. Encrypz derives
-              your keys locally using PBKDF2-HMAC-SHA256 (600,000 iterations). Your salt, password-proof hash, and
-              encrypted vault key are saved to MongoDB—never your plaintext password.</p>
+            <h3>Create Your Vault &amp; Recovery Key</h3>
+            <p>Pick Phone Storage, Folder on Phone, or Google Drive&mdash;no account registration or backend database
+              required. Set a strong master password derived locally with <code>scrypt</code>, and save your offline
+              Base32 Recovery Key.</p>
           </div>
         </div>
         <div class="step-card">
           <div class="step-num">02</div>
           <div class="step-content">
-            <h3>Connect Google Drive</h3>
-            <p>Authorize direct access to your personal Google Drive via secure OAuth 2.0. File transfers stream
-              straight between your phone and your Drive without middleman servers.</p>
+            <h3>Optional Direct Google Drive</h3>
+            <p>Keep vaults 100% offline on your device, or connect your personal Google Drive directly via OAuth 2.0.
+              Encrypted files transfer straight between your phone and Drive with no intermediary server.</p>
           </div>
         </div>
         <div class="step-card">
           <div class="step-num">03</div>
           <div class="step-content">
-            <h3>Encrypt & Upload</h3>
-            <p>Select photos or files (up to 15 MiB). Encrypz reads files into memory and encrypts both contents and
-              filenames locally with AES-256-GCM before uploading directly to your Drive.</p>
+            <h3>Stream-Encrypt Up to 4 GB</h3>
+            <p>Import up to 30 files per batch (up to 4 GB per file). Encrypz stream-encrypts filenames
+              (<code>AES-256-SIV</code>) and contents (64 KiB <code>AES-256-GCM</code>) locally before saving or
+              uploading via resumable Drive transfer.</p>
           </div>
         </div>
         <div class="step-card">
           <div class="step-num">04</div>
           <div class="step-content">
-            <h3>Immediate Lock & Restore</h3>
-            <p>Your vault locks immediately whenever you exit the app. To restore your vault on any new device, simply
-              log in and enter your master password or PIN to decrypt your vault key.</p>
+            <h3>Biometric Unlock, Auto-Lock &amp; Recovery</h3>
+            <p>Vaults lock automatically when backgrounded and block screenshots. Unlock with master password, 6-digit
+              PIN, or fingerprint, and restore anytime from your folder or Google Drive using your password or Recovery
+              Key.</p>
           </div>
         </div>
       </div>
@@ -366,7 +369,7 @@
           <div>
             <div class="card-badge-top">
               <span class="badge-status badge-active"><span class="status-dot"></span> Available Now</span>
-              <span class="badge-version">v1.1.0</span>
+              <span class="badge-version">v2.0.0</span>
             </div>
             <div class="card-icon" style="margin-bottom: 1.25rem;">
               <!-- Android SVG -->
@@ -377,31 +380,27 @@
             </div>
             <h3>Android</h3>
             <p class="download-sub">Android 7.0+ (.apk)</p>
-            <p class="download-desc">Official mobile client featuring native AES-256-GCM encryption, six-digit PIN or
-              master password authentication, immediate vault locking, encrypted filenames, and creation-date photo
-              sorting. Direct sync with Google Drive.</p>
+            <p class="download-desc">Official native Android client featuring Encrypz Vault V2 (<code>EPZ2</code>),
+              offline Phone Storage &amp; Folder vaults, direct Google Drive resumable sync, streaming encryption up to
+              4 GB, biometric/PIN unlock, <code>FLAG_SECURE</code> protection, and offline Base32 Recovery Key.</p>
 
             <div class="download-specs">
               <div class="spec-item"><span class="spec-label">Package:</span> <span
-                  class="spec-value">com.encrypz.vault</span></div>
+                  class="spec-value">com.encrypz.privacy</span></div>
+              <div class="spec-item"><span class="spec-label">Vault Format:</span> <span class="spec-value">Encrypz
+                  Vault V2 (EPZ2)</span></div>
               <div class="spec-item"><span class="spec-label">Target:</span> <span class="spec-value">Android 7.0+ (API
                   24+)</span></div>
-              <div class="spec-item"><span class="spec-label">Cloud Sync:</span> <span class="spec-value">Google Drive
-                  (Direct)</span></div>
-              <div class="spec-item"><span class="spec-label">Key Derivation:</span> <span class="spec-value">PBKDF2
-                  (600k iter)</span></div>
-              <div class="spec-item"><span class="spec-label">File Cap:</span> <span class="spec-value">15 MiB
-                  In-Memory</span></div>
-              <div class="spec-item"><span class="spec-label">Architecture:</span> <span class="spec-value">ARM64 /
-                  Universal</span></div>
+              <div class="spec-item"><span class="spec-label">Backend / DB:</span> <span class="spec-value">None (100%
+                  Serverless)</span></div>
               <div class="spec-item"><span class="spec-label">Status:</span> <span
                   class="spec-value spec-active">Official Release</span></div>
             </div>
           </div>
 
           <div>
-            <a href="https://github.com/encrypz/Encrypz-Android/releases/download/V.1.1.0/encrypz-android-v1.1.0.apk"
-              download="encrypz-android-v1.1.0.apk" class="btn-primary download-action-btn" id="btn-download-android"
+            <a href="https://github.com/Encrypz/EncrypzAndroid/releases/download/v2.0.0/encrypz-android-v2.0.0.apk"
+              download="encrypz-android-v2.0.0.apk" class="btn-primary download-action-btn" id="btn-download-android"
               target="_blank" rel="noopener noreferrer">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -409,10 +408,10 @@
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              <span>Download APK (v1.1.0)</span>
+              <span>Download APK (v2.0.0)</span>
             </a>
             <div class="card-footer-note">
-              <a href="https://github.com/encrypz/Encrypz-Android/releases" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Encrypz/EncrypzAndroid/releases" target="_blank" rel="noopener noreferrer">
                 View Releases & Signatures on GitHub &rarr;
               </a>
             </div>
@@ -533,8 +532,8 @@
           <div class="guide-step">
             <span class="guide-step-num">1</span>
             <h5>Download APK</h5>
-            <p>Tap the <strong>Download APK (v1.1.0)</strong> button above to download
-              <code>encrypz-android-v1.1.0.apk</code> directly from our official GitHub release.
+            <p>Tap the <strong>Download APK (v2.0.0)</strong> button above to download
+              <code>encrypz-android-v2.0.0.apk</code> directly from our official GitHub release.
             </p>
           </div>
 
@@ -547,9 +546,10 @@
 
           <div class="guide-step">
             <span class="guide-step-num">3</span>
-            <h5>Launch & Encrypt</h5>
-            <p>Tap <strong>Install</strong>, sign in with your Google account or email, set your 6-digit PIN or master
-              password, and start securing your files directly to Drive.</p>
+            <h5>Launch &amp; Create Vault</h5>
+            <p>Tap <strong>Install</strong>, create an offline Phone/Folder vault or connect Google Drive, set your
+              master password, save your offline <strong>Base32 Recovery Key</strong>, and optionally enable fingerprint
+              or 6-digit PIN unlock.</p>
           </div>
         </div>
 
@@ -585,23 +585,25 @@
         <div class="restoration-grid">
           <div class="restoration-item">
             <span class="restoration-num">1</span>
-            <h5>Account Credentials</h5>
-            <p>Sign into the app using your registered Google account or email. This retrieves your encrypted vault key
-              from our MongoDB backend.</p>
+            <h5>Encrypted Vault Location</h5>
+            <p>Open your <strong>Folder on Phone</strong> via <em>Select Existing Vault on Phone</em>, or sign into
+              Google and tap <em>Open Existing Google Drive Vault</em> to locate <code>vault.encrypz</code> and
+              <code>masterkey.encrypz</code> directly&mdash;no Encrypz server needed.</p>
           </div>
 
           <div class="restoration-item">
             <span class="restoration-num">2</span>
-            <h5>Master Password or PIN</h5>
-            <p>Enter your 6-digit PIN or master password. The app derives your local decryption key with PBKDF2 (600,000
-              iterations) to decrypt your vault key on-device.</p>
+            <h5>Master Password or Recovery Key</h5>
+            <p>Enter your master password (derived locally via <code>scrypt</code> to unwrap your vault keys), or tap
+              <em>Recover with Recovery Key</em> using your offline <strong>Base32 Recovery Key</strong> to reset a
+              forgotten master password offline.</p>
           </div>
 
           <div class="restoration-item">
             <span class="restoration-num">3</span>
-            <h5>Google Drive Authorization</h5>
-            <p>Authorize your Google Drive to load and decrypt your encrypted files, preserving chronological
-              creation-date photo sorting and original filenames.</p>
+            <h5>Local Decryption &amp; Streaming</h5>
+            <p>Your encrypted folders, filenames (<code>AES-256-SIV</code>), chronological photo timeline, and files up
+              to 4 GB unlock and stream locally on-device with zero servers involved.</p>
           </div>
         </div>
 
@@ -613,9 +615,9 @@
             <line x1="12" y1="17" x2="12.01" y2="17"></line>
           </svg>
           <div>
-            <strong>Strict Zero-Knowledge Notice:</strong> Plaintext passwords and decryption keys are NEVER stored on
-            MongoDB or our servers. If you lose your master password or PIN, your vault cannot be recovered by Encrypz
-            support.
+            <strong>Strict Zero-Knowledge &amp; Zero-Server Notice:</strong> Encrypz operates with zero backend servers
+            or databases. Plaintext passwords, keys, and Recovery Keys never leave your device. If you lose both your
+            master password and your offline Base32 Recovery Key, Encrypz cannot recover your vault.
           </div>
         </div>
       </div>

@@ -74,10 +74,10 @@
     <p>At Encrypz, we believe that privacy is a fundamental human right. In an era where data is commodified and mass surveillance is commonplace, we set out to build tools that give control back to the users.</p>
 
     <h2>The Problem with the Cloud</h2>
-    <p>Cloud storage is incredibly convenient, but it requires you to trust a third party with your most sensitive information. We realized that the only way to truly secure data in the cloud is to ensure it is encrypted *before* it leaves your device.</p>
+    <p>Cloud storage is incredibly convenient, but it requires you to trust a third party with your most sensitive information. We realized that the only way to truly secure data in the cloud is to ensure it is encrypted <em>before</em> it leaves your device.</p>
     
     <h2>Our Approach</h2>
-    <p>We built Encrypz to bring seamless, zero-knowledge privacy directly to mobile users. By leveraging Android's native cryptographic APIs, Encrypz executes military-grade AES-256-GCM encryption and PBKDF2-HMAC-SHA256 key derivation (600,000 iterations for new accounts) locally on your smartphone before any file touches the cloud. File transfers stream straight to your personal Google Drive, while our secure .NET and MongoDB backend coordinates account registration and encrypted vault state without ever seeing your plaintext password, keys, or file data.</p>
+    <p>We built Encrypz to bring seamless, serverless zero-knowledge privacy directly to mobile users. Built on our Encrypz Vault V2 (<code>EPZ2</code>) architecture, all cryptographic operations run strictly on your Android device using memory-hard <code>scrypt</code> key derivation (<code>N=32768</code>), RFC 3394 AES Key Wrap, RFC 5297 <code>AES-256-SIV</code> encrypted filenames, and streaming 64 KiB chunked <code>AES-256-GCM</code> content encryption supporting files up to 4 GB. Store vaults completely offline in Phone Storage or any Folder on Phone, or sync directly to your personal Google Drive via resumable transfers&mdash;with zero Encrypz backend servers, zero databases, biometric &amp; PIN quick unlock, and an offline Base32 Recovery Key.</p>
     
     <h2>Open Source</h2>
     <p>Trust is earned through transparency. That's why our core cryptographic implementation is open source. We invite the community to audit our code and contribute to a more secure future for everyone.</p>
